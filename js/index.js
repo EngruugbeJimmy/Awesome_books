@@ -1,5 +1,5 @@
 // js to access html elements
-/* eslint-disable rule-you-want-to-disable */
+/*
 const books = document.querySelector('.books__container');
 const addForm = document.querySelectorAll('.add__book');
 const bookTitle = document.querySelector('#title');
@@ -15,4 +15,4 @@ const booksCollector = [
   },
 
 ];
-/* eslint-disable rule-you-want-to-disable */
+*/
