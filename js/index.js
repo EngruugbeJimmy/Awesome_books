@@ -5,13 +5,12 @@ const bookTitle = document.querySelector('#title');
 const bookAuthor = document.querySelector('#author');
 const booksCollector = [
   {
-    "title": "Lorem ipsum",
-    "author": "Testeroo Testyy"
+    title: 'Lorem ipsum',
+    author: 'Testeroo Testyy',
   },
   {
-    "title": "Second book",
-    "author": "Testeroo Testyy"
+    title: 'Second book',
+    author: 'Testeroo Testyy',
   },
 
 ];
-
