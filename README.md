@@ -22,7 +22,6 @@ In this project, we built a basic website that allows users to add/remove books 
   - [ ] The correct book dissapears from the page.
 - [ ] Make sure that data is preserved in the browser's memory by using localStorage.
 - [ ] To debug your application, you can use console.log(). Remember to remove debugging code before pushing your code to the remote repository.
-- [ ] Don't use any library or framework, use only plain JavaScript.
 
 > [Live Demo Link](#)
 
