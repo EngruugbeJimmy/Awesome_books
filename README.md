@@ -50,6 +50,36 @@ In this project, we built a basic website that allows users to add/remove books 
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [Algorithm Layout](https://every-layout.dev/)
 
+## Getting Started
+
+- Install git bash to your machine to enable you to clone this repo.
+- install Visual Studio to be able to host a local live version.
+- Install a browser to view the local live version.
+
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+- Internet connection
+- A github account
+
+### Setup
+
+- Open your GitHub account the repository's [link](https://github.com/EngruugbeJimmy/Awesome_books)
+
+### Install
+
+- copy the repo's link and clone it by writing `git clone https://github.com/EngruugbeJimmy/Awesome_books.git` on your git bash terminal.
+- `npm install` to install the dependencies
+
+### Run tests
+
+- You can check for errors by running linter tests found in the github flows.
+
+### Deployment
+
+- Click on 'go live' on your visual studio to view the project live on your local machine.
+
 ## Authors
 
 👤 ABAH JAMES
@@ -63,6 +93,12 @@ In this project, we built a basic website that allows users to add/remove books 
 - [Twitter](https://twitter.com/fmanimashaun)
 - [LinkedIn](https://www.linkedin.com/in/fmanimashaun/)
 - [Website](https://fmanimashaun.com)
+
+👤 **Oscar Deus**
+
+- [GitHub](https://github.com/Oscah01/)
+- [Twitter](https://twitter.com/@killer_pip)
+- [LinkedIn](https://linkedin.com/in/OscahDeus)
 
 ## 🤝 Contributing
 
