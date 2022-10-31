@@ -14,3 +14,17 @@ const booksCollector = [
   },
 
 ];
+
+// Create a remove function
+
+// Create array from the books variable
+const currentBooks = Array.from(books.querySelectorAll('.book'));
+
+// Add event listeners to the button of the book cards
+currentBooks.forEach((book, index) => {
+  book.addEventListener('click', (event) => {
+    if (event.target.matches('button')) {
+      books.removeChild(books.children[index]);
+    }
+  });
+});
