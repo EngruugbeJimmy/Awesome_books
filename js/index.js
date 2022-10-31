@@ -1,5 +1,4 @@
 // js to access html elements
-/*
 const books = document.querySelector('.books__container');
 const addForm = document.querySelectorAll('.add__book');
 const bookTitle = document.querySelector('#title');
@@ -15,4 +14,3 @@ const booksCollector = [
   },
 
 ];
-*/
