@@ -7,7 +7,6 @@
 
 In this project, we built a basic website that allows users to add/remove books from a list. This was achieved by using JavaScript objects and arrays, while using javascript DOM and basic events to dynamically modify the page.
 
-
 ## Project Tasks List (Working-in-progress)
 
 - [ ] Implement only a basic UI with plain HTML
