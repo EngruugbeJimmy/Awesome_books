@@ -2,7 +2,7 @@
 
 // js to access html elements
 const bookList = document.querySelector('.book__list');
-const addNewBookForm = document.querySelector('.new__book');
+const addNewBookForm = document.querySelector('.add__book-form');
 
 // Create an book collection for storing books
 let booksCollector = [
@@ -34,18 +34,13 @@ const displayBook = (arr) => {
     // Loop through the array given
     arr.forEach((book, id) => {
       // create a book card with a class 'book'
-      const bookdiv = document.createElement('div');
-      bookdiv.className = 'book';
+      const bookDiv = document.createElement('div');
+      bookDiv.className = 'book';
 
-      // create the book title element with class 'book__title'
-      const bookTitle = document.createElement('p');
-      bookTitle.className = 'book__title';
-      bookTitle.innerText = book.title;
-
-      // create the book author element with class 'book__author'
-      const bookAuthor = document.createElement('p');
-      bookAuthor.className = 'book__author';
-      bookAuthor.innerText = book.author;
+      // create a book details p with the class 'book__details'
+      const bookDetails = document.createElement('p');
+      bookDetails.className = 'book__details';
+      bookDetails.innerText = `"${book.title}" by ${book.author}`;
 
       // Create the delete button with a class 'book__remove-btn'
       const deleteBtn = document.createElement('button');
@@ -57,17 +52,11 @@ const displayBook = (arr) => {
         deleteBook(id);
       });
 
-      // Create an horizonal line element
-      const hrLine = document.createElement('hr');
-
-      // Append all created elements to the book card
-      bookdiv.appendChild(bookTitle);
-      bookdiv.appendChild(bookAuthor);
-      bookdiv.appendChild(deleteBtn);
-      bookdiv.appendChild(hrLine);
+      bookDiv.appendChild(bookDetails);
+      bookDiv.appendChild(deleteBtn);
 
       // Append the book card to the parent node
-      bookList.appendChild(bookdiv);
+      bookList.appendChild(bookDiv);
     });
   }
 };
