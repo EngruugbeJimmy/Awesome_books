@@ -27,20 +27,9 @@ In this project, we built a basic website that allows users to add/remove books 
 
 ## Screenshots
 
-<h3 align="center">Desktop View</h3>
+<h3 align="center">Screenhot</h3>
 <p align="center">
-  <img width="1440" src="#">
-</P>
-
-<h3 align="center">Tablet View</h3>
-<p align="center">
-  <img width="768" src="#">
-</P>
-
-<h3 align="center">Mobile View</h3>
-<p align="center">
-  <img width="375" src="#">
-  <img width="375" src="#">
+  <img width="375" src="screenshots/mobile_demo.png">
 </P>
 
 ## Built With
