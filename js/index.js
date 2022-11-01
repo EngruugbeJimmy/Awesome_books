@@ -1,4 +1,5 @@
 /* eslint-disable no-use-before-define */
+
 // js to access html elements
 const bookList = document.querySelector('.book__list');
 const addNewBookForm = document.querySelector('.new__book');
@@ -15,6 +16,7 @@ const AddLocalStorage = (data) => {
 const displayBook = (arr) => {
   bookList.innerHTML = '';
 
+  // Check if book collection is empty
   if (arr.length === 0) {
     // create a empty message element with a class 'book__empty'
     const emptyMsg = document.createElement('p');
@@ -68,8 +70,14 @@ const displayBook = (arr) => {
 // Create a remove function
 const deleteBook = (index) => {
   booksCollector = JSON.parse(localStorage.getItem('booksCollection'));
+
+  // Delete book at the given index
   booksCollector.splice(index, 1);
+
+  // display the new array
   displayBook(booksCollector);
+
+  // Update the local storage
   AddLocalStorage(booksCollector);
 };
 
@@ -84,6 +92,7 @@ const addBook = (formElement) => {
     title: bookTitle.value,
     author: BookAuthor.value,
   };
+
   // add book object to book collection
   booksCollector.push(newBook);
   displayBook(booksCollector);
