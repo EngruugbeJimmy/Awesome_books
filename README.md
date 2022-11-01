@@ -9,7 +9,7 @@ In this project, we built a basic website that allows users to add/remove books 
 
 ## Project Tasks List (Working-in-progress)
 
-- [x] Implement only a basic UI with plain HTML
+- [ ] Implement only a basic UI with plain HTML
 - [ ] Create a collection that keeps a list of books (hint: you can use an array of objects for that).
 - [ ] Create a function to add a new book to the collection, with title and author.
 - [ ] Create a function to remove a book from the collection (hint: you can use the array filter() method).
