@@ -1,9 +1,8 @@
 /* eslint-disable no-use-before-define */
 // js to access html elements
 const bookList = document.querySelector('.book__list');
-/*
 const addNewBookForm = document.querySelector('.new__book');
-*/
+
 // Create an book collection for storing books
 const booksCollector = [
   {
@@ -66,6 +65,30 @@ const deleteBook = (index) => {
   displayBook(booksCollector);
 };
 
+// Create a add book function
+const addBook = (formElement) => {
+  // Create book propery variables
+  const bookTitle = formElement.querySelector('#title');
+  const BookAuthor = formElement.querySelector('#author');
+
+  // Create a book object
+  const newBook = {
+    title: bookTitle.value,
+    author: BookAuthor.value,
+  };
+  // add book object to book collection
+  booksCollector.push(newBook);
+  displayBook(booksCollector);
+};
+
+// add event listener to form
+addNewBookForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  addBook(addNewBookForm);
+  addNewBookForm.reset();
+});
+
+// Add event listener to window reload
 window.addEventListener('load', () => {
   displayBook(booksCollector);
 });
