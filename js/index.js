@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 
 // js to access html elements
-const bookList = document.querySelector('.book__list');
+const bookList = document.querySelector('.books');
 const addNewBookForm = document.querySelector('.add__book-form');
 
 // Create an book collection for storing books
