@@ -5,7 +5,12 @@ const bookList = document.querySelector('.book__list');
 const addNewBookForm = document.querySelector('.new__book');
 
 // Create an book collection for storing books
-let booksCollector = [];
+let booksCollector = [
+  {
+    title: 'Testing',
+    author: 'new book',
+  },
+];
 
 // Create a function to add Collection to local storage
 const AddLocalStorage = (data) => {
@@ -108,6 +113,11 @@ addNewBookForm.addEventListener('submit', (event) => {
 
 // Add event listener to window reload
 window.addEventListener('load', () => {
-  booksCollector = JSON.parse(localStorage.getItem('booksCollection'));
+  // Check if the site has been visited previous with saved data
+  if (localStorage.getItem('booksCollection')) {
+    booksCollector = JSON.parse(localStorage.getItem('booksCollection'));
+  } else {
+    booksCollector = [];
+  }
   displayBook(booksCollector);
 });
