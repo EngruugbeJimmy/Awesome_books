@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
   <!-- ***********************  PAGE OVERALL CONTENT WRAPPER *********************** -->
@@ -17,28 +19,34 @@
     <!-- ***********************  PAGE HEADER *********************** -->
     <header class="header"></header>
 
-      <!-- ***********************  PAGE MAIN *********************** -->
+    <!-- ***********************  PAGE MAIN *********************** -->
     <main class="main">
 
-      <h1 class="page-title">Awesome Books</h1>
+      <!-- ***********************  BOOK COLLECTION SECTION *********************** -->
+      <section class="book__collection">
+        <h1 class="page-title">All awesome books</h1>
 
-      <div class="book__list"></div>
+        <div class="books"></div>
+      </section>
 
-      <form class="new__book">
-        <p>
+      <!-- ***********************  ADD BOOK SECTION *********************** -->
+      <section class="add__book">
+        <h2 class="add__book-title">Add a new book</h2>
+
+        <form class="add__book-form">
+        
           <label for="title">
             <input type="text" name="title" id="title" placeholder="Title">
           </label>
-        </p>
-
-        <p>
+        
           <label for="author">
             <input type="text" name="author" id="author" placeholder="Author">
           </label>
-        </p>
-
-        <input type="submit" value="Add">
-      </form>
+        
+          <input type="submit" value="Add">
+        </form>
+      </section>
+      
 
     </main>
 
@@ -47,4 +55,5 @@
   </div>
   <script src="js/index.js"></script>
 </body>
+
 </html>
