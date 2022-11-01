@@ -23,8 +23,6 @@ In this project, we built a basic website that allows users to add/remove books 
 - [x] Make sure that data is preserved in the browser's memory by using localStorage.
 - [x] To debug your application, you can use console.log(). Remember to remove debugging code before pushing your code to the remote repository.
 
-> [Live Demo Link](https://engruugbejimmy.github.io/Awesome_books/)
-
 ## Screenshots
 
 <h3 align="center">Screenhot</h3>
