@@ -35,9 +35,8 @@ In this project, we built a basic website that allows users to add/remove books 
 ## Built With
 
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
-- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-- [Algorithm Layout](https://every-layout.dev/)
+
 
 ## Getting Started
 
