@@ -1,2 +1,5 @@
 # .gitignore
 node_modules/
+
+# ignore the add.js file
+js/add.js
