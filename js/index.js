@@ -1,112 +1,113 @@
-/* eslint-disable no-use-before-define */
+/* eslint-disable max-classes-per-file */
+// eslint-disable-next-line max-classes-per-file
 
 // js to access html elements
 const bookList = document.querySelector('.books');
 const addNewBookForm = document.querySelector('.add__book-form');
 
-// Create an book collection for storing books
-let booksCollector = [
-  {
-    title: 'Testing',
-    author: 'new book',
-  },
-];
+// create a bookListing class
+class BookListing {
+  // declare a constructor function
+  constructor() {
+    if (localStorage.getItem('bookList')) {
+      this.list = [...JSON.parse(localStorage.getItem('bookList'))];
+    } else {
+      this.list = [];
+    }
+  }
 
-// Create a function to add Collection to local storage
-const AddLocalStorage = (data) => {
-  localStorage.setItem('booksCollection', JSON.stringify(data));
-};
+  // create a display method
+  displayList() {
+    // clear the current list UI
+    bookList.innerHTML = '';
 
-// Add display function
-const displayBook = (arr) => {
-  bookList.innerHTML = '';
-
-  // Check if book collection is empty
-  if (arr.length === 0) {
-    // create a empty message element with a class 'book__empty'
-    const emptyMsg = document.createElement('p');
-    emptyMsg.className = 'book__empty';
-    emptyMsg.innerText = 'Empty Book Collection';
-
-    // Append the book card to the parent node
-    bookList.appendChild(emptyMsg);
-  } else {
-    // Loop through the array given
-    arr.forEach((book, id) => {
-      // create a book card with a class 'book'
-      const bookDiv = document.createElement('div');
-      bookDiv.className = 'book';
-
-      // create a book details p with the class 'book__details'
-      const bookDetails = document.createElement('p');
-      bookDetails.className = 'book__details';
-      bookDetails.innerText = `"${book.title}" by ${book.author}`;
-
-      // Create the delete button with a class 'book__remove-btn'
-      const deleteBtn = document.createElement('button');
-      deleteBtn.className = 'book__remove-btn';
-      deleteBtn.innerText = 'Remove';
-
-      // Attach a listener to the remove botton for delete function
-      deleteBtn.addEventListener('click', () => {
-        deleteBook(id);
-      });
-
-      bookDiv.appendChild(bookDetails);
-      bookDiv.appendChild(deleteBtn);
+    // checking the number of books in the book list container
+    if (this.list.length === 0) {
+      // create a empty message element with a class 'book__empty'
+      const emptyMsg = document.createElement('p');
+      emptyMsg.className = 'book__empty';
+      emptyMsg.innerText = 'Empty Book Collection';
 
       // Append the book card to the parent node
-      bookList.appendChild(bookDiv);
-    });
+      bookList.appendChild(emptyMsg);
+    } else {
+      // Loop through the array given
+      this.list.forEach((book, id) => {
+        // create a book card with a class 'book'
+        const bookDiv = document.createElement('div');
+        bookDiv.className = 'book';
+
+        // create a book details p with the class 'book__details'
+        const bookDetails = document.createElement('p');
+        bookDetails.className = 'book__details';
+        bookDetails.innerText = `"${book.title}" by ${book.author}`;
+
+        // Create the delete button with a class 'book__remove-btn'
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'book__remove-btn';
+        deleteBtn.innerText = 'Remove';
+
+        // Attach a listener to the remove botton for delete function
+        deleteBtn.addEventListener('click', () => {
+          this.removeBookFromList(id);
+        });
+
+        bookDiv.appendChild(bookDetails);
+        bookDiv.appendChild(deleteBtn);
+
+        // Append the book card to the parent node
+        bookList.appendChild(bookDiv);
+      });
+    }
   }
-};
 
-// Create a remove function
-const deleteBook = (index) => {
-  booksCollector = JSON.parse(localStorage.getItem('booksCollection'));
+  // create a book method
+  addToList(newBook) {
+    // update the book list with the new book
+    this.list.push(newBook);
 
-  // Delete book at the given index
-  booksCollector.splice(index, 1);
+    // update the local storage with the new books
+    localStorage.setItem('bookList', JSON.stringify(this.list));
 
-  // display the new array
-  displayBook(booksCollector);
+    // update the page with the new book
+    this.displayList();
+  }
 
-  // Update the local storage
-  AddLocalStorage(booksCollector);
-};
+  // create delete book method
+  removeBookFromList(index) {
+    // Delete book at the given index
+    this.list.splice(index, 1);
 
-// Create a add book function
-const addBook = (formElement) => {
-  // Create book propery variables
-  const bookTitle = formElement.querySelector('#title');
-  const BookAuthor = formElement.querySelector('#author');
+    // update the local storage with the current state of book list
+    localStorage.setItem('bookList', JSON.stringify(this.list));
 
-  // Create a book object
-  const newBook = {
-    title: bookTitle.value,
-    author: BookAuthor.value,
-  };
+    // update the page with the current state of book list
+    this.displayList();
+  }
+}
 
-  // add book object to book collection
-  booksCollector.push(newBook);
-  displayBook(booksCollector);
-  AddLocalStorage(booksCollector);
-};
+class Book {
+  constructor() {
+    this.title = document.querySelector('#title').value;
+    this.author = document.querySelector('#author').value;
+  }
+}
+
+// create an instance of a book listing
+const bookListContainer = new BookListing();
 
 // add event listener to form
 addNewBookForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  addBook(addNewBookForm);
+
+  // create an instance of a book from book class
+  const newbook = new Book();
+  bookListContainer.addToList(newbook);
   addNewBookForm.reset();
 });
 
 // Add event listener to window reload
 window.addEventListener('load', () => {
-  // Check if the site has been visited previous with saved data
-  if (localStorage.getItem('booksCollection')) {
-    booksCollector = JSON.parse(localStorage.getItem('booksCollection'));
-  } else {
-    booksCollector = [];
-  }
-  displayBook(booksCollector);
+  // load page content
+  bookListContainer.displayList();
 });
