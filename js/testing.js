@@ -7,61 +7,107 @@ const addNewBookFormTEST = document.querySelector('.add__book-form.testing');
 
 // create a bookListing class
 class BookListing {
+  // declare a constructor function
   constructor() {
-    this.list = [];
-  }
-
-  getList() {
     if (localStorage.getItem('bookList')) {
       this.list = [...JSON.parse(localStorage.getItem('bookList'))];
+    } else {
+      this.list = [];
     }
-    return this.list;
   }
 
+  // create a display method
+  displayList() {
+    // clear the current list UI
+    bookListTest.innerHTML = '';
+
+    // checking the number of books in the book list container
+    if (this.list.length === 0) {
+      // create a empty message element with a class 'book__empty'
+      const emptyMsg = document.createElement('p');
+      emptyMsg.className = 'book__empty';
+      emptyMsg.innerText = 'Empty Book Collection';
+
+      // Append the book card to the parent node
+      bookListTest.appendChild(emptyMsg);
+    } else {
+      // Loop through the array given
+      this.list.forEach((book, id) => {
+        // create a book card with a class 'book'
+        const bookDiv = document.createElement('div');
+        bookDiv.className = 'book';
+
+        // create a book details p with the class 'book__details'
+        const bookDetails = document.createElement('p');
+        bookDetails.className = 'book__details';
+        bookDetails.innerText = `"${book.title}" by ${book.author}`;
+
+        // Create the delete button with a class 'book__remove-btn'
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'book__remove-btn';
+        deleteBtn.innerText = 'Remove';
+
+        // Attach a listener to the remove botton for delete function
+        deleteBtn.addEventListener('click', () => {
+          this.removeBookFromList(id);
+        });
+
+        bookDiv.appendChild(bookDetails);
+        bookDiv.appendChild(deleteBtn);
+
+        // Append the book card to the parent node
+        bookListTest.appendChild(bookDiv);
+      });
+    }
+  }
+
+  // create a book method
   addToList(newBook) {
+    // update the book list with the new book
     this.list.push(newBook);
-    localStorage.setItem('bookList', this.getList());
+
+    // update the local storage with the new books
+    localStorage.setItem('bookList', JSON.stringify(this.list));
+
+    // update the page with the new book
+    this.displayList();
+  }
+
+  // create delete book method
+  removeBookFromList(index) {
+    // Delete book at the given index
+    this.list.splice(index, 1);
+
+    // update the local storage with the current state of book list
+    localStorage.setItem('bookList', JSON.stringify(this.list));
+
+    // update the page with the current state of book list
+    this.displayList();
   }
 }
 
 class Book {
   constructor() {
-    this.title = document.querySelector('#title2');
-    this.author = document.querySelector('#author2');
+    this.title = document.querySelector('#title2').value;
+    this.author = document.querySelector('#author2').value;
   }
 }
 
-// create an instance of the the book listing class
+// create an instance of a book listing
 const bookListContainer = new BookListing();
 
-// const list = document.querySelector('.books.list');
+// add event listener to form
+addNewBookFormTEST.addEventListener('submit', (event) => {
+  event.preventDefault();
 
-// class Book {
-//   constructor() {
-//     // create a book card with a class 'book'
-//     this.bookdiv = document.createElement('div');
-//     this.bookdiv.className = 'book';
+  // create an instance of a book from book class
+  const newbook = new Book();
+  bookListContainer.addToList(newbook);
+  addNewBookFormTEST.reset();
+});
 
-//     // create a book details p with the class 'book__details'
-//     this.bookDetails = document.createElement('p');
-//     this.bookDetails.className = 'book__details';
-//     this.title = document.querySelector('#title').value;
-//     this.author = document.querySelector('#author').value;
-//     this.bookDetails.innerText = `"${this.title}" by ${this.author}`;
-
-//     // Create the delete button with a class 'book__remove-btn'
-//     this.deleteBtn = document.createElement('button');
-//     this.deleteBtn.className = 'book__remove-btn';
-//     this.deleteBtn.innerText = 'Remove';
-//     // Attach a listener to the remove botton for delete function
-//     this.deleteBtn.addEventListener('click', (event) => {
-//       list.removeChild(event.target.parentNode);
-//     });
-//   }
-
-//   addBook () {
-//     this.bookdiv.appendChild(this.bookDetails);
-//     this.bookdiv.appendChild(this.deleteBtn);
-//     list.appendChild(this.bookdiv);
-//   }
-// }
+// Add event listener to window reload
+window.addEventListener('load', () => {
+  // load page content
+  bookListContainer.displayList();
+});
