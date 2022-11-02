@@ -1,5 +1,4 @@
 /* eslint-disable max-classes-per-file */
-// eslint-disable-next-line max-classes-per-file
 
 // js to access html elements
 const bookListDiv = document.querySelector('.books');
