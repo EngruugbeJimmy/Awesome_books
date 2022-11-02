@@ -21,7 +21,10 @@ In this project, we built a basic website that allows users to add/remove books 
   - [x] The correct book is removed from the collection.
   - [x] The correct book dissapears from the page.
 - [x] Make sure that data is preserved in the browser's memory by using localStorage.
-- [x] To debug your application, you can use console.log(). Remember to remove debugging code before pushing your code to the remote repository.
+- [x] Refactor the code from [PR #12](https://github.com/EngruugbeJimmy/Awesome_books/pull/12)
+- [x] Use JavaScript classes instead of objects and arrays
+- [x] replace add and remove function with class methods to add and remove books.
+- [x] Add CSS styles to the application to make it match this wireframe:
 
 ## DEMO LINK
 
@@ -37,6 +40,7 @@ In this project, we built a basic website that allows users to add/remove books 
 
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
 
 ## Getting Started
