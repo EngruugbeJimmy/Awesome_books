@@ -2,7 +2,7 @@
 // eslint-disable-next-line max-classes-per-file
 
 // js to access html elements
-const bookList = document.querySelector('.books');
+const bookListDiv = document.querySelector('.books');
 const addNewBookForm = document.querySelector('.add__book-form');
 
 // create a bookListing class
@@ -19,7 +19,7 @@ class BookListing {
   // create a display method
   displayList() {
     // clear the current list UI
-    bookList.innerHTML = '';
+    bookListDiv.innerHTML = '';
 
     // checking the number of books in the book list container
     if (this.list.length === 0) {
@@ -29,7 +29,7 @@ class BookListing {
       emptyMsg.innerText = 'Empty Book Collection';
 
       // Append the book card to the parent node
-      bookList.appendChild(emptyMsg);
+      bookListDiv.appendChild(emptyMsg);
     } else {
       // Loop through the array given
       this.list.forEach((book, id) => {
@@ -56,7 +56,7 @@ class BookListing {
         bookDiv.appendChild(deleteBtn);
 
         // Append the book card to the parent node
-        bookList.appendChild(bookDiv);
+        bookListDiv.appendChild(bookDiv);
       });
     }
   }
@@ -94,7 +94,7 @@ class Book {
 }
 
 // create an instance of a book listing
-const bookListContainer = new BookListing();
+const bookList = new BookListing();
 
 // add event listener to form
 addNewBookForm.addEventListener('submit', (event) => {
@@ -102,12 +102,12 @@ addNewBookForm.addEventListener('submit', (event) => {
 
   // create an instance of a book from book class
   const newbook = new Book();
-  bookListContainer.addToList(newbook);
+  bookList.addToList(newbook);
   addNewBookForm.reset();
 });
 
 // Add event listener to window reload
 window.addEventListener('load', () => {
   // load page content
-  bookListContainer.displayList();
+  bookList.displayList();
 });
